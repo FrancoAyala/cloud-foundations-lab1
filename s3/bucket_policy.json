@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAppRoleRead",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::000000000000:role/app-role"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectVersion"
+      ],
+      "Resource": [
+        "arn:aws:s3:::course-data-lake/raw/*",
+        "arn:aws:s3:::course-data-lake/processed/*"
+      ]
+    },
+    {
+      "Sid": "AllowAppRoleList",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::000000000000:role/app-role"
+      },
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::course-data-lake"
+    }
+  ]
+}
